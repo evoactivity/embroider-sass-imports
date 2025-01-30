@@ -1,6 +1,11 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+function isProduction() {
+  return EmberApp.env() === 'production';
+}
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -11,14 +16,48 @@ module.exports = function (defaults) {
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,
     staticAddonTrees: true,
-    staticHelpers: true,
-    staticModifiers: true,
-    staticComponents: true,
+    staticInvokables: true,
     staticEmberSource: true,
     skipBabel: [
       {
         package: 'qunit',
       },
     ],
+    splitAtRoutes: ['application', 'second'],
+    packagerOptions: {
+      webpackConfig: {
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              commons: {
+                test: /\.s[ac]ss$/i,
+                name: 'commons',
+                chunks: 'initial',
+                minChunks: 2,
+              },
+            },
+          },
+        },
+        module: {
+          strictExportPresence: true,
+          rules: [
+            {
+              test: /\.s[ac]ss$/i,
+              use: [
+                isProduction() ? MiniCssExtractPlugin.loader : 'style-loader',
+                { loader: 'css-loader', options: { url: false } },
+                {
+                  loader: 'sass-loader',
+                  options: {
+                    webpackImporter: false,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+    // end packagerOptions
   });
 };
