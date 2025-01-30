@@ -26,18 +26,6 @@ module.exports = function (defaults) {
     splitAtRoutes: ['application', 'second'],
     packagerOptions: {
       webpackConfig: {
-        optimization: {
-          splitChunks: {
-            cacheGroups: {
-              commons: {
-                test: /\.s[ac]ss$/i,
-                name: 'commons',
-                chunks: 'initial',
-                minChunks: 2,
-              },
-            },
-          },
-        },
         module: {
           strictExportPresence: true,
           rules: [
