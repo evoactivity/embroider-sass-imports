@@ -35,6 +35,7 @@ module.exports = function (defaults) {
             {
               test: /\.(css)$/i,
               type: 'asset/resource',
+              use: ['postcss-loader'],
             },
             {
               test: /\.s[ac]ss$/i,
