@@ -90,5 +90,9 @@
   "ember": {
     "edition": "octane"
   },
-  "dependencies": {}
+  "pnpm": {
+    "patchedDependencies": {
+      "@embroider/webpack": "patches/@embroider__webpack.patch"
+    }
+  }
 }

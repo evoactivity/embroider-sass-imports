@@ -26,9 +26,16 @@ module.exports = function (defaults) {
     splitAtRoutes: ['application', 'second'],
     packagerOptions: {
       webpackConfig: {
+        output: {
+          assetModuleFilename: 'assets/[name].[hash][ext]',
+        },
         module: {
           strictExportPresence: true,
           rules: [
+            {
+              test: /\.(css)$/i,
+              type: 'asset/resource',
+            },
             {
               test: /\.s[ac]ss$/i,
               use: [

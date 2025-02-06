@@ -1,0 +1,17 @@
+diff --git a/src/ember-webpack.js b/src/ember-webpack.js
+index a3ea7a8397629a38d8063b0e3c76c6d118a82218..d555fc54ef999cd47b4780df0469123472e4be3a 100644
+--- a/src/ember-webpack.js
++++ b/src/ember-webpack.js
+@@ -214,11 +214,7 @@ const Webpack = (_a = class Webpack {
+                                 maybeThreadLoader(babel.isParallelSafe, this.extraThreadLoaderOptions),
+                                 makeBabelLoaderOptions(babel.majorVersion, variant, (0, path_1.join)(this.pathToVanillaApp, babel.filename), this.extraBabelLoaderOptions),
+                             ]),
+-                        },
+-                        {
+-                            test: isCSS,
+-                            use: styleLoaders,
+-                        },
++                        }
+                     ],
+                 },
+                 output: {

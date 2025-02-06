@@ -4,13 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@embroider/webpack':
+    hash: ijpu4jyx72wuj2je4dnplmnzta
+    path: patches/@embroider__webpack.patch
+
 importers:
 
   .:
-    dependencies:
-      sass:
-        specifier: ^1.83.4
-        version: 1.83.4
     devDependencies:
       '@babel/core':
         specifier: ^7.26.0
@@ -41,7 +42,7 @@ importers:
         version: 2.1.8(@embroider/core@3.5.0)
       '@embroider/webpack':
         specifier: ^4.0.9
-        version: 4.0.9(@embroider/core@3.5.0)(webpack@5.97.1)
+        version: 4.0.9(patch_hash=ijpu4jyx72wuj2je4dnplmnzta)(@embroider/core@3.5.0)(webpack@5.97.1)
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.19.0
@@ -156,6 +157,9 @@ importers:
       qunit-dom:
         specifier: ^3.4.0
         version: 3.4.0
+      sass:
+        specifier: ^1.83.4
+        version: 1.83.4
       sass-loader:
         specifier: ^16.0.4
         version: 16.0.4(sass@1.83.4)(webpack@5.97.1)
@@ -7350,7 +7354,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/webpack@4.0.9(@embroider/core@3.5.0)(webpack@5.97.1)':
+  '@embroider/webpack@4.0.9(patch_hash=ijpu4jyx72wuj2je4dnplmnzta)(@embroider/core@3.5.0)(webpack@5.97.1)':
     dependencies:
       '@babel/core': 7.26.7(supports-color@8.1.1)
       '@babel/preset-env': 7.26.7(@babel/core@7.26.7)(supports-color@8.1.1)
